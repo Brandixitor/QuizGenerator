@@ -20,7 +20,7 @@ try {
 }
 
 String qtype[]={"MCQ","Fill in the Blanks","True or False"};
-String subjtype[]={"Biology","Math","Informatique"};
+String subjtype[]={"Biologie","Math","Informatique"};
 
 // JComboBox cb=new JComboBox(qtype);
 JComboBox cb2=new JComboBox(subjtype);
@@ -98,7 +98,7 @@ JLabel Title;
 Title = new JLabel("", JLabel.CENTER);
 f2.add(Title);
 Title.setSize(350,50);
-Title.setText("Appuyez sur le bouton Ajouter pour ajouter la question");
+Title.setText("Appuyez sur le bouton 'Ajouter' pour ajouter la question");
 JComboBox cb=new JComboBox(qtype);
 cb.setBounds(50,100,200,30);
 f2.add(cb);
@@ -159,7 +159,7 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
             f2.add(opB);
             f2.add(opC);
             f2.add(opD);
-            ans = new JTextField("Type the answer here");
+            ans = new JTextField("Tapez la réponse ici");
             ans.setBounds(50,400, 200,30);
             f2.add(ans);
 
@@ -178,8 +178,8 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
           headerLabel = new JLabel("", JLabel.CENTER);
           f2.add(headerLabel);
           headerLabel.setSize(350,100);
-          headerLabel.setText("Type the question using a underscore ( _ ) for the blank space");
-          ans = new JTextField("Type the answer here");
+          headerLabel.setText("Tapez la question en utilisant un trait de soulignement ( _ ) pour l'espace vide");
+          ans = new JTextField("Tapez la réponse ici");
           ans.setBounds(50,200, 200,30);
           f2.add(ans);
 
@@ -206,9 +206,9 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
           headerLabel = new JLabel("", JLabel.CENTER);
           f2.add(headerLabel);
           headerLabel.setSize(350,100);
-          headerLabel.setText("Select either True or False");
+          headerLabel.setText("Sélectionnez Vrai ou Faux");
 
-          ans = new JTextField("Type the answer here");
+          ans = new JTextField("Tapez la réponse ici");
           ans.setBounds(50,400, 200,30);
           f2.add(ans);
 
@@ -226,19 +226,19 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
 }
 
 class Modify extends JFrame{
-JFrame f3= new JFrame("Modify Question");
+JFrame f3= new JFrame("Modifier la question");
 Modify(JComboBox subjtype){
 
 JLabel Title;
 Title = new JLabel("", JLabel.CENTER);
 f3.add(Title);
 Title.setSize(350,50);
-Title.setText("Please enter the id of the question you wish to modify");
+Title.setText("Veuillez saisir l'identifiant de la question que vous souhaitez modifier");
 
-JTextField t1 = new JTextField("Enter id here");
+JTextField t1 = new JTextField("Entrez l'identifiant ici");
 t1.setBounds(50,150, 200,30);
 
-JButton modq=new JButton("Modify question");
+JButton modq=new JButton("Modifier la question");
 f3.add(modq);
 modq.setBounds(50,400,120, 40);
 modq.addActionListener(new ActionListener()   {
@@ -260,19 +260,19 @@ f3.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 }
 
 class Delete extends JFrame{
-JFrame f4= new JFrame("Delete Question");
+JFrame f4= new JFrame("Supprimer la question");
 Delete(){
 
 JLabel Title;
 Title = new JLabel("", JLabel.CENTER);
 f4.add(Title);
 Title.setSize(350,50);
-Title.setText("Please enter the question you wish to delete");
+Title.setText("Veuillez saisir la question que vous souhaitez supprimer");
 
-JTextField t1 = new JTextField("Enter id here");
+JTextField t1 = new JTextField("Entrez l'identifiant ici");
 t1.setBounds(50,150, 200,30);
 
-JButton delq=new JButton("Delete question");
+JButton delq=new JButton("Supprimer la question");
 f4.add(delq);
 delq.setBounds(50,400,120, 40);
 delq.addActionListener(new ActionListener()   {
@@ -584,13 +584,13 @@ class Operation
         if(subs[0]&&subs[1]&&subs[2])
             query=con.generateTest(n);
         else if(subs[0]&&subs[1]&&!subs[2])
-            query=con.generateTest(n,"Biology","Chemistry");
+            query=con.generateTest(n,"Biologie","Chemistry");
         else if(subs[0]&&!subs[1]&&subs[2])
-            query=con.generateTest(n,"Biology","Maths");
+            query=con.generateTest(n,"Biologie","Maths");
         else if(!subs[0]&&subs[1]&&subs[2])
             query=con.generateTest(n,"Chemistry","Maths");
         else if(subs[0]&&!subs[1]&&!subs[2])
-            query=con.generateTest(n,"Biology");
+            query=con.generateTest(n,"Biologie");
         else if(!subs[0]&&subs[1]&&!subs[2])
             query=con.generateTest(n,"Chemistry");
         else if(!subs[0]&&!subs[1]&&subs[2])
@@ -693,19 +693,19 @@ class generate extends Frame implements WindowListener, MouseListener
     public generate()
     {
         setLayout(new FlowLayout());
-        lbl= new Label("Select Your Subjects:");
+        lbl= new Label("Sélectionnez vos sujets:");
         add(lbl);
-        s1=new Checkbox("Biology");
+        s1=new Checkbox("Biologie");
         add(s1);
         s2=new Checkbox("Maths");
         add(s2);
         s3=new Checkbox("Informatique");
         add(s3);
         n=new TextField(10);
-        nL=new Label("Enter number of queries");
+        nL=new Label("Entrez le nombre de requêtes");
         add(nL);
         add(n);
-        bn= new Button("Generate");
+        bn= new Button("Générer");
         bn.addMouseListener(this);
         add(bn);
         c=new Choice();
