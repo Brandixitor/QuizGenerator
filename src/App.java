@@ -9,7 +9,7 @@ import java.util.List;
 import java.io.*;
 import java.lang.*;
 
-class mini extends JFrame {//inheriting JFrame
+class mini extends JFrame {// Héritation du JFrame
 
 mini(){
 
@@ -23,28 +23,31 @@ String qtype[]={"MCQ","Fill in the Blanks","True or False"};
 String subjtype[]={"Biologie","Math","Informatique"};
 
 // JComboBox cb=new JComboBox(qtype);
+// Création du menu de choix
 JComboBox cb2=new JComboBox(subjtype);
 
-JButton b1=new JButton("Insert");//create button
+// Création des boutons
+JButton b1=new JButton("Insert");
 JButton b2=new JButton("Modify");
 JButton b3=new JButton("Delete");
 JButton b4=new JButton("Generate Quiz");
 
 // cb.setBounds(50, 100,90,20);
+// Définir le rectangle englobant de chaque composant (menu de choix et les boutons)
 cb2.setBounds(30,70,150,40);
 b1.setBounds(30,150,120, 40);
 b2.setBounds(30,200,120, 40);
 b3.setBounds(30,250,120, 40);
 b4.setBounds(30,300,120, 40);
 
-  JLabel Heading;
-  Heading = new JLabel("", JLabel.CENTER);
-  add(Heading);
-  Heading.setSize(500,50);
-  Heading.setText("Choisissez un sujet et cliquez sur l'une des options ci-dessous");
- add(cb2);
+JLabel Heading;
+Heading = new JLabel("", JLabel.CENTER);
+add(Heading);
+Heading.setSize(500,50);
+Heading.setText("Choisissez un sujet et cliquez sur l'une des options ci-dessous");
+add(cb2);
 
-
+// Lance l'action approprié au clic du bouton 
 b1.addActionListener(new ActionListener()   {
   public void actionPerformed(ActionEvent e) {
     new Insert(cb2);
@@ -70,15 +73,18 @@ b4.addActionListener(new ActionListener()   {
   }
 } );
 
-add(b1);//adding button on frame
+// Ajouter des boutons au cadre (frame)
+add(b1);
 add(b2);
 add(b3);
 add(b4);
 
 setSize(600,600);
+// Supprimer le Layout par défaut
 setLayout(null);
+// Fait apparaître le cadre sur l'écran
 setVisible(true);
-
+// Définit l'opération qui se produira par défaut lorsque l'utilisateur initiera une "fermeture" sur cette trame.
 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 }
@@ -90,40 +96,56 @@ public static void main(String[] args) {
 new Login();
 }}
 
-class Insert extends JFrame{
+class Insert extends JFrame{// Héritation du JFrame
+// Creation d'un JFrame(conteneur de niveau supérieur)
 JFrame f2= new JFrame("Insérer une question ");
+// Creation de la liste de choix
 Insert(JComboBox subjtype){
 String qtype[]={" ","QCM","Remplir les espaces vides","Vrai ou faux"};
+// Ajout du titre
 JLabel Title;
 Title = new JLabel("", JLabel.CENTER);
 f2.add(Title);
 Title.setSize(350,50);
 Title.setText("Appuyez sur le bouton 'Ajouter' pour ajouter la question");
+// Création du menu de choix
 JComboBox cb=new JComboBox(qtype);
+// Définir la position et la taille du ComboBox
 cb.setBounds(50,100,200,30);
+// Ajout du ComboBox au frame(Cadre)
 f2.add(cb);
+// Creation d'un champ de texte
 JTextField t1 = new JTextField("Veuillez entrer la question ici");
+// Définir la position et la taille du champ de texte
 t1.setBounds(50,150, 200,30);
-
-JButton addq=new JButton("Ajouter une question");//create button
+// Creation du bouton addq
+JButton addq=new JButton("Ajouter une question");
+// Ajout du button au frame
 f2.add(addq);
+// Définir la position et la taille du boutton
 addq.setBounds(50,450,120, 40);
 
 
-
+// Lance l'action approprié au clic de l'option choisie
 cb.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 myBox(evt,cb,t1,addq,subjtype);
             }
         });
-
+// Ajout du ComboBox au frame
 f2.add(cb);
+// Ajout du TextField(champ de texte) au frame
 f2.add(t1);
+// Fait la zone rectangulaire du frame en pixels
 f2.setSize(400,600);
+// Supprimer le Layout par défaut
 f2.setLayout(null);
+// Fait apparaître le cadre sur l'écran
 f2.setVisible(true);
+// Définit l'opération qui se produira par défaut lorsque l'utilisateur initiera une "fermeture" sur cette trame.
 f2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 }
+// Creation des champs de texte
 JTextField opA,opB,opC,opD;
 JTextField ans;
 
@@ -131,19 +153,22 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
 
 
 
-
+        // Si l'option "une" du ComboBox est choisie
         if(cb.getSelectedIndex() == 1) {
-
+          // Creation de JLabel(string court)
           JLabel headerLabel;                ///REPEATED CODE
           headerLabel = new JLabel("", JLabel.CENTER);
+          // Ajouter JLabel au frame
           f2.add(headerLabel);
+          // Fait la zone rectangulaire du frame en pixels
           headerLabel.setSize(350,100);
           // headerLabel.setText("Click on the correct answers");
-
+            // Creation des champs de texte pour chaque option
             opA = new JTextField("Option A");
             opB = new JTextField("Option B");
             opC = new JTextField("Option C");
             opD = new JTextField("Option D");
+            // Définir le rectangle englobant de chaque champ de texte 
             opA.setBounds(100,200, 200,30);
             opB.setBounds(100,250, 200,30);
             opC.setBounds(100,300, 200,30);
@@ -155,14 +180,18 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
             // f2.add(checkBox1);
             // f2.add(checkBox2);
 
+            // Ajout des champs de texte au frame
             f2.add(opA);
             f2.add(opB);
             f2.add(opC);
             f2.add(opD);
+            // Creation du champ de texte pour la reponse
             ans = new JTextField("Tapez la réponse ici");
+            // Définir le rectangle englobant du champ de texte
             ans.setBounds(50,400, 200,30);
+            // Ajout du champ de texte au frame
             f2.add(ans);
-
+            // Lance l'action approprié au clic de l'option choisie
             addq.addActionListener(new ActionListener()   {
             public void actionPerformed(ActionEvent e) {
               JDBCStart b = new JDBCStart();
@@ -172,6 +201,7 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
         }
       });
     }
+        // Si la deuxième option du ComboBox est choisie
         else if(cb.getSelectedIndex() == 2)
         {
           JLabel headerLabel;                ///REPEATED CODE
@@ -199,7 +229,8 @@ void myBox(ActionEvent evt,JComboBox cb, JTextField q, JButton addq, JComboBox s
 
 
         }
-
+    
+        // Si la troisième option du ComboBox est choisie
         else if(cb.getSelectedIndex() == 3)
         {
           JLabel headerLabel;                ///REPEATED CODE
